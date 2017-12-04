@@ -34,8 +34,8 @@ build_script:
   - cmake -C ..\cmake\caches\ReleaseGcc.cmake -G "%CMAKE_GENERATOR%" -D MDT_PREFIX_PATH="C:\Mdt" ..\
   - cmake --build . -- -j4
 
-#test_script:
-  #- ctest --output-on-failure .
+test_script:
+  - ctest --output-on-failure .
 
 #after_build:
   #- cpack -G ZIP .

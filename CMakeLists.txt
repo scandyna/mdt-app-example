@@ -29,7 +29,12 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
+# Enable testing
+# Must be placed before any add_subdirectory() command, else tests that are defined in sub-directories will be ignored
+enable_testing()
+
 add_subdirectory(src)
+add_subdirectory(tests)
 
 # # Rules to install application's dependencies
 # # Note that this is currently experimental

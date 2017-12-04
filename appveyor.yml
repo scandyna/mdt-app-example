@@ -17,6 +17,7 @@ environment:
 install:
   - ps: Start-FileDownload 'https://github.com/scandyna/multidiagtools/releases/download/v0.3.6-rc3/Mdt0-0.3.6-Qt-5.9-Windows-GNU-i386.zip'
   - 7z x Mdt0-*.zip
+  - del Mdt0-*.zip
   - move Mdt0-* C:\Mdt
   - cmake -D QT_PREFIX_PATH=%QT_PREFIX_PATH% -P C:\Mdt\MdtPostInstall.cmake
 

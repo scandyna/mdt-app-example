@@ -5,7 +5,14 @@ how to use the [Mdt](https://github.com/scandyna/multidiagtools) library .
 
 It is also used to check distributed releases of Mdt.
 
-## Build your project on Linux
+## Install Mdt
+
+Before we are able to build the application,
+we have to install Mdt.
+
+See the [INSTALL](https://github.com/scandyna/multidiagtools/blob/master/INSTALL.md) file from Mdt for how to proceed.
+
+## Build the application on Linux
 
 Create a build directory and go to it:
 ```bash
@@ -26,7 +33,7 @@ cmake -D MDT_PREFIX_PATH=~/opt/mdt/release ../../
 
 It is also possible to specify a installation prefix:
 ```bash
-cmake -D CMAKE_INSTALL_PREFIX=~/opt/helloworld/release ../../
+cmake -D CMAKE_INSTALL_PREFIX=~/opt/mdtappexample/release ../../
 ```
 
 To avoid specifying compiler flags, it is also possible to use a cache file:
@@ -38,6 +45,12 @@ Build (-j4 is for parallel build, allowing max. 4 processes):
 ```bash
 make -j4
 ```
+
+Try to run the application:
+```bash
+src/mdtappexample
+```
+
 
 You can also try to generate a archive:
 ```bash

@@ -1,3 +1,6 @@
+Linux: [![Build Status](https://travis-ci.org/scandyna/mdt-app-example.svg?branch=master)](https://travis-ci.org/scandyna/mdt-app-example)
+Windows: [![Build Status](https://ci.appveyor.com/api/projects/status/gltn853s147blxlq?svg=true)](https://ci.appveyor.com/project/scandyna/mdt-app-example)
+
 # A minimal Mdt based application
 
 This is a example application made to explain
@@ -64,6 +67,57 @@ but this is currently experimental.
 
 For more informations about how to deploy application,
 a interesting start is [Qt for Linux - Deployment](http://doc.qt.io/qt-5/linux-deployment.html).
+
+## Build the application on Windows
+
+For this section, it will be considered that the application source tree is: C:\Users\You\Documents\HelloWorld.
+
+In the root of the source tree, create a directory called "build", and a subdirectory called "release".
+
+Open a command prompt and cd to the created directory.
+Call the mdtenv.bat so that the compiler, Qt5 and Mdt are available in the PATH.
+
+Note: the mdtenv.bat script was generated during installation of Mdt.
+See [Install Mdt](#install-mdt) step for more details.
+
+Initialzise the build:
+```bash
+%HOMEPATH%\Documents\opt\Mdt\Mdt0-0.3.6-Qt5.9-Windows-GNU-i386\mdtenv.bat
+cmake -G "MinGW Makefiles" -D MDT_PREFIX_PATH="%HOMEPATH%\Documents\opt\Mdt\Mdt0-0.3.6-Qt5.9-Windows-GNU-i386" ..\..\
+```
+
+To avoid specifying compiler flags, it is also possible to use a cache file:
+```bash
+%HOMEPATH%\Documents\opt\Mdt\Mdt0-0.3.6-Qt5.9-Windows-GNU-i386\mdtenv.bat
+cmake -G "MinGW Makefiles" -C ..\..\cmake\caches\ReleaseGcc.cmake -D MDT_PREFIX_PATH="%HOMEPATH%\Documents\opt\Mdt\Mdt0-0.3.6-Qt5.9-Windows-GNU-i386" ..\..\
+```
+
+Build:
+```bash
+mingw32-make -j4
+```
+
+You should be able to run the application
+from the current command line prompt:
+```bash
+bin\mdtappexample.exe
+```
+
+To execute it outside current command prompt,
+the application must be shipped with all its required dependencies
+(mainly dlls)
+
+Mdt has some experimental stuff to copy dependecies
+and install them. You can try to generate a ZIP archive,
+extract it, an run the application.
+
+To generate a ZIP archive:
+```bash
+cpack -G ZIP .
+```
+
+For more informations about how to deploy application,
+a interesting start is [Qt for Windows - Deployment](http://doc.qt.io/qt-5/windows-deployment.html).
 
 
 # OLD stuff
@@ -170,73 +224,6 @@ include(CPack)
 
 
 
-## Build your project on Windows
-
-For this section, it will be considered that the HelloWorld source tree is: C:\Users\You\Documents\HelloWorld.
-
-In the root of the source tree, create a directory called "build", and a subdirectory called "release".
-
-Open a command prompt and cd to the created directory.
-To initialize the build directory, the compiler tool set must be in the PATH.
-
-Initialzise the build:
-```bash
-set PATH=C:\Path\To\MinGW\bin;%PATH%
-cmake -G "MinGW Makefiles" -D MDT_PREFIX_PATH="C:/path/to/mdt" -D QT_PREFIX_PATH="C:/path/to/qt5 ..\..\
-```
-
-For my personnal case, I also created a CMake cache file
-to specify compiler flags.
-To compile the application in debug mode, I use:
-```bash
-set PATH=C:\Qt\Tools\mingw530_32\bin;%PATH%
-cmake -C ..\..\cmake\caches\DebugGcc.cmake -G "MinGW Makefiles" -D MDT_PREFIX_PATH="C:/Users/Me/Documents/opt/Mdt/debug" -D QT_PREFIX_PATH="C:/Qt/5.9.1/mingw53_32" ..\..\
-```
-
-A script named mdtenv.bat should be generated in the built directory,
-which setups a environment, like qtenv2.bat does.
-It will set the PATH to include:
-- Path to the executable directory of the compiler
-- Path to the executable directory of the Qt5 library
-- Path to the executable directory of Mdt
-
-Execute mdtenv.bat:
-```bash
-mdtenv.bat
-```
-
-To run a command prompt with this environment set,
-you can create a shortcut that runs cmd.exe and calls this mdtenv.bat.
-Example of options of that shortcut could be:
-- Target: C:\Windows\System32\cmd.exe /A /Q /K C:\path\to\mdtenv.bat
-- Run in: where you want to be after launching the shortcut
-
-Build:
-```bash
-mingw32-make -j4
-```
-
-You should be able to run the application
-from the current command line prompt:
-```bash
-bin\helloworld.exe
-```
-
-To execute it outside current command prompt,
-the application must be shipped with all its required dependencies
-(mainly dlls)
-
-Mdt has some experimental stuff to copy dependecies
-and install them. You can try to generate a ZIP archive,
-extract it, an run the application.
-
-To generate a ZIP archive:
-```bash
-cpack -G ZIP .
-```
-
-For more informations about how to deploy application,
-a interesting start is [Qt for Windows - Deployment](http://doc.qt.io/qt-5/windows-deployment.html).
 
 ## Using icons
 

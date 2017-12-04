@@ -12,7 +12,6 @@ environment:
     # MinGW
     - CMAKE_GENERATOR: "MinGW Makefiles"
       QT_PREFIX_PATH: 'C:\Qt\5.9\mingw53_32'
-      #MINGW_PREFIX_PATH: 'C:\Qt\Tools\mingw530_32'
 
 install:
   - ps: Start-FileDownload 'https://github.com/scandyna/multidiagtools/releases/download/v0.3.6-rc3/Mdt0-0.3.6-Qt-5.9-Windows-GNU-i386.zip'
@@ -27,7 +26,6 @@ before_build:
   - set PATH=%PATH:C:\Program Files\Git\bin;=%
   - set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
   - set PATH=%PATH:C:\Program Files (x86)\Git\bin;=%
-  #- set PATH=%QT_PREFIX_PATH%\bin;%MINGW_PREFIX_PATH%\bin;%PATH%
 
 build_script:
   - mkdir build

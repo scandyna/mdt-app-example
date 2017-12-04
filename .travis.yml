@@ -84,6 +84,7 @@ install:
  - wget https://github.com/scandyna/multidiagtools/releases/download/v0.3.6-rc3/Mdt0-0.3.6-Qt-5.8-Linux-${COMPILER_ID}-x86_64.tar.bz2 -O Mdt.tar.bz2
  - mkdir /opt/Mdt
  - tar -xjf Mdt.tar.bz2 -C /opt/Mdt --strip-components 1
+ - cmake -D QT_PREFIX_PATH=/opt/qt58 -P /opt/Mdt/MdtPostInstall.cmake
 
 before_script:
  - "export DISPLAY=:99.0"

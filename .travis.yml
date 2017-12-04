@@ -80,7 +80,7 @@ install:
  - sudo apt-get install -y libboost-dev
  - wget http://ftp.de.debian.org/debian/pool/main/p/patchelf/patchelf_0.8-2_amd64.deb
  - sudo dpkg -i patchelf_0.8-2_amd64.deb
- - yes | sudo apt-get install -y qt58base qt58x11extras qt58imageformats qt58svg qt58tools
+ - yes | sudo apt-get install -y qt58base qt58x11extras qt58imageformats qt58svg qt58tools qt58translations
  - wget https://github.com/scandyna/multidiagtools/releases/download/v0.3.6-rc3/Mdt0-0.3.6-Qt-5.8-Linux-${COMPILER_ID}-x86_64.tar.bz2 -O Mdt.tar.bz2
  - mkdir /opt/Mdt
  - tar -xjf Mdt.tar.bz2 -C /opt/Mdt --strip-components 1

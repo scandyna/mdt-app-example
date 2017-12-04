@@ -37,18 +37,18 @@ build_script:
 test_script:
   - ctest --output-on-failure .
 
-#after_build:
-  #- cpack -G ZIP .
+after_build:
+  - cpack -G ZIP .
 
-#artifacts:
-  #- path: build\Mdt*.zip
-    #name: MdtZipDistribution
+artifacts:
+  - path: build\MdtAppExample-*.zip
+    name: MdtZipDistribution
 
-#deploy:
-  #provider: GitHub
-  #auth_token:
-    #secure: YnLpfRJ3an3UULcagmbxw9gqAquwEqJZ2Vj/glhhG0bC4VOzSTMsSyxnP9dR7Z2I
-  #description: "Mdt release for Windows"
-  #artifact: MdtZipDistribution
-  #on:
-    #appveyor_repo_tag: true
+deploy:
+  provider: GitHub
+  auth_token:
+    secure: YnLpfRJ3an3UULcagmbxw9gqAquwEqJZ2Vj/glhhG0bC4VOzSTMsSyxnP9dR7Z2I
+  description: "Mdt app example release for Windows"
+  artifact: MdtZipDistribution
+  on:
+    appveyor_repo_tag: true

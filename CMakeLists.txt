@@ -36,6 +36,8 @@ enable_testing()
 add_subdirectory(src)
 add_subdirectory(tests)
 
+
+
 # # Rules to install application's dependencies
 # # Note that this is currently experimental
 # include(MdtDependenciesUtils)

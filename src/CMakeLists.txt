@@ -18,8 +18,11 @@ else()
 endif()
 target_link_libraries(mdtappexample Mdt0::ItemModel Qt5::Widgets)
 
-# Rules to install the application
-install(
-  TARGETS mdtappexample
-  RUNTIME DESTINATION bin
+# Rule to install the application and its dependencies
+# Note that this is currently experimental
+include(MdtDeployUtils)
+mdt_install_app(
+  TARGET mdtappexample
+  TRANSLATIONS de fr_ca
+  PREFIX_PATH ${CMAKE_PREFIX_PATH}
 )

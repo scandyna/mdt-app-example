@@ -18,15 +18,35 @@
  ** along with Mdt.  If not, see <http://www.gnu.org/licenses/>.
  **
  ****************************************************************************/
-#include <QApplication>
-#include "MainWindow.h"
+#ifndef MAIN_WINDOW_H
+#define MAIN_WINDOW_H
 
-int main(int argc, char **argv)
-{
-  QApplication app(argc, argv);
-  MainWindow window;
+#include <QMainWindow>
+#include <QWidget>
+#include <memory>
 
-  window.show();
-
-  return app.exec();
+namespace Ui{
+  class MainWindow;
 }
+
+/*! \brief Main window of the application
+ */
+class MainWindow : public QMainWindow
+{
+ Q_OBJECT
+
+ public:
+
+  /*! \brief Constructor
+   */
+  explicit MainWindow(QWidget *parent = nullptr);
+
+  // unique_ptr needs the complete definition of Ui::MainWindow
+  ~MainWindow();
+
+ private:
+
+  std::unique_ptr<Ui::MainWindow> mUi;
+};
+
+#endif // #ifndef MAIN_WINDOW_H

@@ -25,14 +25,9 @@ endif()
 # Thread support
 find_package(Threads REQUIRED)
 
-# Qt5 support
-find_package(Qt5 COMPONENTS Widgets)
-find_package(Mdt0 COMPONENTS ItemModel)
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_subdirectory(src)
 
@@ -48,4 +43,3 @@ add_subdirectory(src)
 
 # This must be added after all install() rules
 include(CPack)
-

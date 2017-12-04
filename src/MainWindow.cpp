@@ -18,15 +18,23 @@
  ** along with Mdt.  If not, see <http://www.gnu.org/licenses/>.
  **
  ****************************************************************************/
-#include <QApplication>
 #include "MainWindow.h"
+#include "ui_MainWindow.h"
+#include <Mdt/ItemModel/VariantTableModel.h>
 
-int main(int argc, char **argv)
+using namespace Mdt::ItemModel;
+
+MainWindow::MainWindow(QWidget* parent)
+ : QMainWindow(parent),
+   mUi( std::make_unique<Ui::MainWindow>() )
 {
-  QApplication app(argc, argv);
-  MainWindow window;
+  mUi->setupUi(this);
 
-  window.show();
+  auto *model = new VariantTableModel(VariantTableModelStorageRule::GroupDisplayAndEditRoleData, this);
+  mUi->tableView->setModel(model);
+  model->populate(5, 3);
+}
 
-  return app.exec();
+MainWindow::~MainWindow()
+{
 }

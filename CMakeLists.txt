@@ -36,17 +36,13 @@ enable_testing()
 add_subdirectory(src)
 add_subdirectory(tests)
 
-
-
-# # Rules to install application's dependencies
-# # Note that this is currently experimental
-# include(MdtDependenciesUtils)
-# find_package(mdtcpbindeps)
-# set_target_properties(mdtappexample PROPERTIES INSTALL_RPATH "\$ORIGIN/../lib")
-# mdt_install_binary_dependencies(
-#   TARGET mdtappexample
-#   SEARCH_FIRST_PATH_PREFIX_LIST "${CMAKE_PREFIX_PATH}"
-# )
+if(CMAKE_BUILD_TYPE MATCHES "Debug")
+  message("DEBUG build")
+  set(debug_file_name_postfix "-debug")
+else()
+  set(debug_file_name_postfix "")
+endif()
+set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_CXX_COMPILER_ID}${debug_file_name_postfix}")
 
 # This must be added after all install() rules
 include(CPack)
